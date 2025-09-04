@@ -1,4 +1,4 @@
-Jag har gjort en enkel webbapplikation byggd i ASP.NET Core (.NET 8). Den körs i en container och är kopplad till en SQL Server-databas i en separat container. På startsidan finns en länk till en Todo-sida där man kan lägga till och se uppgifter.
+Jag har gjort en enkel webbapplikation byggd i ASP.NET Core. Den körs i en container och är kopplad till en SQL Server-databas i en separat container. På startsidan finns en länk till en Todo-sida där man kan lägga till och se uppgifter.
 
 För att köra applikationen behöver man Docker Desktop. Man klonar projektet från GitHub, kör kommandot docker compose up --build och öppnar sidan på http://localhost:8080
 .
