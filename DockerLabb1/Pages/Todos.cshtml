@@ -1,0 +1,26 @@
+﻿@page
+@model DockerLabb1.Pages.TodosModel
+@{
+    ViewData["Title"] = "Todos";
+}
+<h1>Todos</h1>
+
+<form method="post">
+    <input asp-for="NewTitle" />
+    <button type="submit">Add</button>
+</form>
+
+<ul>
+    @foreach (var t in Model.Items)
+    {
+        <li>
+            <form method="post" asp-page-handler="toggle" asp-route-id="@t.Id" style="display:inline">
+                <button type="submit">@((t.Done) ? "☑" : "☐")</button>
+            </form>
+            @t.Title
+            <form method="post" asp-page-handler="delete" asp-route-id="@t.Id" style="display:inline">
+                <button type="submit">Papperskorg</button>
+            </form>
+        </li>
+    }
+</ul>

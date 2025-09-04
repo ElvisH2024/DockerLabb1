@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Your_strong@Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+  web:
+    build:
+      context: ./DockerLabb1
+      dockerfile: Dockerfile
+    container_name: dockerlabb1-web
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=db;Database=LabDb;User Id=sa;Password=Your_strong@Passw0rd;TrustServerCertificate=True;Encrypt=False
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  mssql_data: {}
